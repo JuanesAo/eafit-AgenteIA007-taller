@@ -89,7 +89,7 @@ SUPABASE_KEY = "tu_supabase_anon_key"
 2. Espera a que el despliegue termine (puede tardar 2-3 minutos)
 3. Tu dashboard estará disponible en la URL que elegiste
 
-## ✅ Paso 4: Verificar el Despliegue
+##  Paso 4: Verificar el Despliegue
 
 ### 4.1 Probar el Bot
 
