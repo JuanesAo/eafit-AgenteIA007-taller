@@ -1,8 +1,8 @@
-# 🤖 Sistema de Agente Multi-Interfaz
+#  Sistema de Agente Multi-Interfaz
 
 Sistema de agente de IA con interfaz de Telegram y dashboard de administración en Streamlit, desarrollado para el taller de IA de EAFIT.
 
-## 📋 Descripción
+##  Descripción
 
 Este sistema cuenta con:
 - **Bot de Telegram**: Interfaz conversacional que recuerda el historial de chat
@@ -10,7 +10,7 @@ Este sistema cuenta con:
 - **Agente LLM**: Cerebro basado en LangChain + Groq (Llama 3)
 - **Memoria Persistente**: Base de datos Supabase para almacenar conversaciones
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 ```
 Usuario → [Telegram Bot]
@@ -22,7 +22,7 @@ Usuario → [Telegram Bot]
       [Dashboard Streamlit] ← Admin
 ```
 
-## 🛠️ Stack Tecnológico
+##  Stack Tecnológico
 
 - **Lenguaje**: Python 3.10+
 - **LLM**: Groq API (Llama 3)
@@ -32,7 +32,7 @@ Usuario → [Telegram Bot]
 - **Dashboard Admin**: Streamlit
 - **Herramientas Opcionales**: Tavily API (búsqueda web)
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 eafit-AgenteIA007-taller/
@@ -47,7 +47,7 @@ eafit-AgenteIA007-taller/
 └── README.md              # Este archivo
 ```
 
-## 🚀 Configuración Inicial
+##  Configuración Inicial
 
 ### 1. Clonar el Repositorio
 
@@ -80,7 +80,7 @@ SUPABASE_KEY=tu_supabase_key
 3. Ejecuta el script `setup_database.sql` para crear la tabla `chat_history`
 4. Verifica que la tabla se creó correctamente en la sección **Table Editor**
 
-## 📱 Uso del Sistema
+##  Uso del Sistema
 
 ### Ejecutar el Bot de Telegram
 
@@ -94,7 +94,7 @@ python bot.py
 streamlit run dashboard.py
 ```
 
-## 🔑 Obtener las API Keys
+##  Obtener las API Keys
 
 ### Groq API
 1. Visita [console.groq.com](https://console.groq.com)
@@ -113,20 +113,17 @@ streamlit run dashboard.py
 3. Ve a **Settings** → **API**
 4. Copia la **URL** y la **anon/public key**
 
-## 🎯 Funcionalidades
+##  Funcionalidades
 
 ### Bot de Telegram
-- ✅ Conversación natural con IA
-- ✅ Memoria persistente de conversaciones
-- ✅ Respuestas contextuales basadas en historial
-- ✅ Indicador de "escribiendo..."
+-  Conversación natural con IA (en proceso)
 
 ### Dashboard de Administración
-- ✅ Vista de todas las conversaciones
-- ✅ Filtrado por usuario
-- ✅ Visualización cronológica de mensajes
-- ✅ Datos crudos exportables
-- ✅ Actualización en tiempo real
+-  Vista de todas las conversaciones
+-  Filtrado por usuario
+-  Visualización cronológica de mensajes
+-  Datos crudos exportables
+-  Actualización en tiempo real
 
 ## 🔧 Personalización
 
@@ -146,7 +143,7 @@ Modelos disponibles en Groq:
 - `llama3-70b-8192`
 - `mixtral-8x7b-32768`
 
-## 🐛 Solución de Problemas
+##  Solución de Problemas
 
 ### Error de conexión a Supabase
 - Verifica que `SUPABASE_URL` y `SUPABASE_KEY` sean correctos
@@ -160,17 +157,17 @@ Modelos disponibles en Groq:
 - Verifica que `GROQ_API_KEY` sea válida
 - Revisa los límites de tu plan en Groq
 
-## 📝 Notas de Seguridad
+##  Notas de Seguridad
 
-- **⚠️ NUNCA subas el archivo `.env` a git**
+- ** NUNCA subas el archivo `.env` a git**
 - El archivo `.gitignore` ya está configurado para proteger tus claves
 - Usa variables de entorno en los servicios de hosting
 
-## 👨‍💻 Desarrollo
+##  Desarrollo
 
 Creado para el Taller de Agentes IA - Universidad EAFIT 2025-02
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto es de uso educativo para el curso de IA de EAFIT.
 
