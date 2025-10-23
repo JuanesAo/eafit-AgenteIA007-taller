@@ -1,9 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain.agents import create_tool_calling_agent, AgentExecutor
-from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 # Cargar variables de entorno
 load_dotenv()
@@ -15,42 +13,26 @@ llm = ChatGroq(
     temperature=0.3
 )
 
-# 2. Definir Herramientas (Opcional pero recomendado)
-# El agente podrá decidir si usar esta herramienta o no.
-# NOTA: Requiere TAVILY_API_KEY en el .env
-# tools = [TavilySearchResults(max_results=3)]
-# Para un taller más simple, podemos empezar sin herramientas:
-tools = []
-
-# 3. Crear el Prompt
-# Este prompt guía al agente.
-prompt = ChatPromptTemplate.from_messages([
-    ("system", "Eres un asistente de IA útil. Responde al usuario de forma concisa. "
-     "Si usas una herramienta, resume los resultados."),
-    MessagesPlaceholder(variable_name="chat_history"),
-    ("human", "{input}"),
-    MessagesPlaceholder(variable_name="agent_scratchpad"),
-])
-
-# 4. Crear el Agente
-# create_tool_calling_agent es el estándar moderno
-agent = create_tool_calling_agent(llm, tools, prompt)
-
-# 5. Crear el Ejecutor del Agente
-# El Executor maneja el "loop" de Pensar -> Actuar -> Observar
-agent_executor = AgentExecutor(
-    agent=agent,
-    tools=tools,
-    verbose=True  # Poner en True para ver "pensamientos" del agente
-)
-
 # Función para invocar al agente
 def invoke_agent(user_input, chat_history_messages):
     """
-    Invoca al agente con la entrada del usuario y el historial.
+    Invoca al LLM con la entrada del usuario y el historial.
+    Esta es una versión simplificada que no usa agentes complejos
+    pero funciona de manera confiable en cualquier entorno.
     """
-    return agent_executor.invoke({
-        "input": user_input,
-        "chat_history": chat_history_messages
-    })
-
+    # Construir el contexto de la conversación
+    messages = [
+        SystemMessage(content="Eres un asistente de IA útil. Responde al usuario de forma concisa y amigable.")
+    ]
+    
+    # Agregar el historial de chat
+    messages.extend(chat_history_messages)
+    
+    # Agregar la pregunta actual del usuario
+    messages.append(HumanMessage(content=user_input))
+    
+    # Invocar al LLM
+    response = llm.invoke(messages)
+    
+    # Retornar en el formato esperado
+    return {"output": response.content}
