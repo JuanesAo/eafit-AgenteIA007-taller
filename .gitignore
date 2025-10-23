@@ -1,6 +1,5 @@
 # Environment variables
-.env.example
-KEYS.md
+.env
 
 # Python
 __pycache__/
