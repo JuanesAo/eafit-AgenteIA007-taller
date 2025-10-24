@@ -13,9 +13,9 @@ if not GROQ_API_KEY:
     print("El bot podrá guardar mensajes pero NO podrá responder con IA")
 
 # 1. Inicializar el LLM
-# Usamos Llama 3 vía Groq. Es rápido y potente.
+# Usamos Llama 3.3 vía Groq. Es rápido y potente.
 llm = ChatGroq(
-    model="llama3-8b-8192",
+    model="llama-3.3-70b-versatile",  # Modelo actualizado y activo
     temperature=0.3
 )
 
