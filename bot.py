@@ -38,8 +38,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ai_message = response['output']
         
     except Exception as e:
-        print(f"Error invocando al agente: {e}")
-        ai_message = "Lo siento, tuve un error al procesar tu solicitud."
+        import traceback
+        error_detail = traceback.format_exc()
+        print(f"❌ Error invocando al agente:")
+        print(error_detail)
+        ai_message = f"Lo siento, tuve un error al procesar tu solicitud.\nError: {str(e)}"
     
     # 4. Guardar la respuesta de la IA en la memoria
     add_message_to_history(user_id, 'ai', ai_message)

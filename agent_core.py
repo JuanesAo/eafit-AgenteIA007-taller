@@ -6,6 +6,12 @@ from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 # Cargar variables de entorno
 load_dotenv()
 
+# Verificar que la API key existe
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    print("⚠️ WARNING: GROQ_API_KEY no está configurada en el archivo .env")
+    print("El bot podrá guardar mensajes pero NO podrá responder con IA")
+
 # 1. Inicializar el LLM
 # Usamos Llama 3 vía Groq. Es rápido y potente.
 llm = ChatGroq(
